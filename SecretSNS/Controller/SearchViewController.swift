@@ -21,9 +21,13 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     var categoryData : [String] = [""]
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var postButton: UIButton!
     
     let manImage:UIImage = UIImage(named: "man2")!
     let womanImage:UIImage = UIImage(named: "woman2")!
+    let CMmanImage:UIImage = UIImage(named: "man3")!
+    let CMwomanImage:UIImage = UIImage(named: "woman3")!
+    let personImage:UIImage = UIImage(named: "person")!
     
     let roomDataModel = RoomDataModel()
     let loadDBModel = LoadDBModel()
@@ -31,6 +35,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     var roomString = String()
     var docID = [String]()
     var userID = String()
+    var CMdataSets = [DataSet]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +72,21 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             searchBar.endEditing(true)
         }
     
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.postButton.layer.masksToBounds = true
+        self.postButton.layer.cornerRadius = 30
+        
+    }
+   
+    @IBAction func PostButton(_ sender: Any) {
+        
+        let postVC = self.storyboard?.instantiateViewController(identifier: "postVC") as! PostFieldViewController
+        postVC.modalTransitionStyle = .flipHorizontal
+        postVC.modalPresentationStyle = .fullScreen
+        self.present(postVC, animated: true, completion: nil)
+    }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,11 +100,38 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         
-        tableView.rowHeight = 350
+        tableView.rowHeight = 400
         
         let sexData = loadDBModel.dataSets[indexPath.row].sexData
         let ageData = loadDBModel.dataSets[indexPath.row].ageData
         let userName = loadDBModel.dataSets[indexPath.row].userName
+        let docid = loadDBModel.dataSets[indexPath.row].docID
+        print("ここだよ",docid)
+        print("CMData",CMdataSets)
+        
+        if let CMData = CMdataSets.first(where: {$0.docID == docid}) {
+            
+    
+            if CMData.sexData == "女性" {
+                cell.CMImageView.image = CMwomanImage
+            } else if CMData.sexData == "男性"{
+                cell.CMImageView.image = CMmanImage
+            }
+            cell.Number1.isHidden = false
+            cell.BestComment.font = UIFont(name: "YuseiMagic", size: 17)
+            cell.CMuserNameLabel.text = CMData.userName
+            cell.CMuserNameLabel.font = UIFont(name: "YuseiMagic", size: 17)
+            cell.CMuserInforLabel.text = CMData.ageData + CMData.sexData
+            cell.CMcommentLabel.text = "\(CMData.comment)"
+        } else {
+            
+            cell.CMImageView.image = personImage
+            cell.Number1.isHidden = true
+            cell.CMuserNameLabel.text = "まだコメントがありません"
+            cell.CMuserNameLabel.font = .systemFont(ofSize: 25)
+            cell.CMuserInforLabel.text = ""
+            cell.CMcommentLabel.text = ""
+        }
         
         cell.commentLabel.numberOfLines = 0
         
@@ -94,28 +140,32 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         } else if sexData == "男性"{
             cell.profileImageView.image = manImage
         }
+        
         cell.userNameLabel.text = userName
+        cell.userNameLabel.font = UIFont(name: "YuseiMagic", size: 17)
         cell.userInforLabel.text = ageData + sexData
         cell.commentLabel.text = "\(loadDBModel.dataSets[indexPath.row].comment)"
         cell.countLabel.text = String(self.loadDBModel.dataSets[indexPath.row].likeCount)
         cell.likeButton.tag = indexPath.row
-        print(docID)
         cell.likeButton.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
-        
-        
+        cell.commentButton.tag = indexPath.row
+        cell.commentButton.addTarget(self, action: #selector(Comment(_:)), for: .touchUpInside)
+                
         if (self.loadDBModel.dataSets[indexPath.row].likeFlagDic[userID] != nil) == true{
             
             
             let flag = self.loadDBModel.dataSets[indexPath.row].likeFlagDic[userID]
             
+            
+            
             if flag! as! Bool == true{
                 
-                cell.likeButton.setImage(UIImage(named: "heart"), for: .normal)
+                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             }else{
-                cell.likeButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+                cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
             }
         }
-        
+        print("cellforat")
         
         return cell
     }
@@ -123,10 +173,23 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         //画面遷移
         let commentVC = self.storyboard?.instantiateViewController(identifier: "commentVC") as! CommentViewController
+        
+        let sexData = loadDBModel.dataSets[indexPath.row].sexData
+        let ageData = loadDBModel.dataSets[indexPath.row].ageData
+        let userName = loadDBModel.dataSets[indexPath.row].userName
+        
+        commentVC.userName = userName
+        commentVC.ageData = ageData
+        commentVC.sexData = sexData
+        commentVC.comment = "\(loadDBModel.dataSets[indexPath.row].comment)"
+        commentVC.count = self.loadDBModel.dataSets[indexPath.row].likeCount
+        
         commentVC.docID = docID[indexPath.row]
-        
-        self.navigationController?.pushViewController(commentVC, animated: true)
-        
+        commentVC.roomString = self.roomString
+        commentVC.modalTransitionStyle = .flipHorizontal
+        commentVC.modalPresentationStyle = .fullScreen
+        self.present(commentVC, animated: true, completion: nil)
+
     }
     
     func createPickerView () {
@@ -167,10 +230,30 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         roomString = categoryTextField.text!
         
-        roomCheck()
-        
-    }
+        let dispatchGroup = DispatchGroup()
+        let dispatchQueue = DispatchQueue(label: "queue", attributes: .concurrent)
+        loadDBModel.loadContents(roomData: roomString, completion: { docID in
+            
+            docID.forEach { id in
+                print(id)
+                dispatchGroup.enter()
+                dispatchQueue.async {
+                    self.loadDBModel.loadBestComment(CMroomData: self.roomString, docID: id ,completion:  {dataSet in
+                        if let dataSet = dataSet {
+                            self.CMdataSets.append(dataSet)
+                        }
+                        dispatchGroup.leave()
+                    })
+                }
+            }
+        })
     
+        dispatchGroup.notify(queue: .main) {
+            print("リロードされるよ")
+            self.tableView.reloadData()
+        }
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.categoryTextField.endEditing(true)
     }
@@ -181,15 +264,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     
-    func roomCheck () {
-        
-    
-    
-    loadDBModel.loadContents(roomData: roomString)
-    
-    print(roomString)
-    
-}
 
 func DocData() {
     
@@ -238,7 +312,29 @@ func DocData() {
         tableView.reloadData()
         
     }
-    
+    @objc func Comment(_ sender:UIButton){
+        
+        let commentVC = self.storyboard?.instantiateViewController(identifier: "commentVC") as! CommentViewController
+        
+        let sexData = loadDBModel.dataSets[sender.tag].sexData
+        let ageData = loadDBModel.dataSets[sender.tag].ageData
+        let userName = loadDBModel.dataSets[sender.tag].userName
+        
+        commentVC.PostuserName = userName
+        commentVC.PostageData = ageData
+        commentVC.PostsexData = sexData
+        commentVC.comment = "\(loadDBModel.dataSets[sender.tag].comment)"
+        commentVC.count = self.loadDBModel.dataSets[sender.tag].likeCount
+        commentVC.flag = self.loadDBModel.dataSets[sender.tag].likeFlagDic[userID] as? Bool ?? false
+        
+        commentVC.docID = loadDBModel.dataSets[sender.tag].docID
+        commentVC.roomString = self.roomString
+        commentVC.modalTransitionStyle = .crossDissolve
+        commentVC.modalPresentationStyle = .fullScreen
+        self.present(commentVC, animated: true, completion: nil)
+
+        
+    }
 
     /*
     // MARK: - Navigation

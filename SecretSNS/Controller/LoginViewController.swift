@@ -43,7 +43,7 @@ class LoginViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.sexTextField.inputAccessoryView = sexToolbar
     }
     
-    @IBAction func login(_ sender: Any) {
+    @IBAction func login(_ sender: UIButton) {
         
         if userNameTextField.text! == "" || ageTextField.text! == "" || sexTextField.text! == "" {
             return
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             tabVC?.modalTransitionStyle = .crossDissolve
             tabVC?.modalPresentationStyle = .fullScreen
             HUD.hide()
-            self.navigationController?.present(tabVC!, animated: true, completion: nil)
+            self.present(tabVC!, animated: true, completion: nil)
            
         }
        

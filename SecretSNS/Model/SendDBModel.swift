@@ -43,9 +43,9 @@ class SendDBModel {
         
     }
     
-    func sendComment(CMRoomData:String,CMdocID:String) {
+    func sendComment(CMRoomData:String,docID:String) {
         
-        self.db.collection(CMRoomData).document(CMdocID).collection("comments").document().setData(["userID":self.userID as Any, "userName":self.userName as Any,"comment":self.comment as Any,"ageData":self.ageData as Any,"sexData":self.sexData as Any,"postDate":Date().timeIntervalSince1970,"like":0,"likeFlagDic":[userID:false]])
+        self.db.collection(CMRoomData).document(docID).collection("comments").document().setData(["userID":self.userID as Any, "userName":self.userName as Any,"comment":self.comment as Any,"ageData":self.ageData as Any,"sexData":self.sexData as Any,"postDate":Date().timeIntervalSince1970,"like":0,"likeFlagDic":[userID:false]])
 
     }
     

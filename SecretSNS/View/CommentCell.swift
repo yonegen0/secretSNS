@@ -15,7 +15,7 @@ class CommentCell: UITableViewCell {
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var countLabel: UILabel!
     
-    @IBOutlet var profileImage: UIImageView!
+    @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var userInforLabel: UILabel!
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var commentLabel: UILabel!

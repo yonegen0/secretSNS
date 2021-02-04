@@ -15,7 +15,6 @@
 		C4312FB825AA8C29006DB433 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4312FB725AA8C29006DB433 /* SelectViewController.swift */; };
 		C4312FBD25AA9D74006DB433 /* LoadDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4312FBC25AA9D74006DB433 /* LoadDBModel.swift */; };
 		C4312FC225AA9DB1006DB433 /* DataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4312FC125AA9DB1006DB433 /* DataSet.swift */; };
-		C44BCE4E25A96A5A00D3E249 /* LikeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44BCE4D25A96A5A00D3E249 /* LikeDataModel.swift */; };
 		C44BCE5625AA7B8500D3E249 /* PostFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44BCE5525AA7B8500D3E249 /* PostFieldViewController.swift */; };
 		C456A7862595840700B2AE32 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C456A7842595840700B2AE32 /* PostCell.swift */; };
 		C456A7872595840700B2AE32 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C456A7852595840700B2AE32 /* PostCell.xib */; };
@@ -30,11 +29,28 @@
 		C457A7F82578ED380070F290 /* SecretSNSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457A7F72578ED380070F290 /* SecretSNSTests.swift */; };
 		C457A8032578ED380070F290 /* SecretSNSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457A8022578ED380070F290 /* SecretSNSUITests.swift */; };
 		C457A83D2578FB800070F290 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457A83C2578FB800070F290 /* LoginViewController.swift */; };
+		C458B40425C8D921002AA853 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C458B40325C8D921002AA853 /* MyViewController.swift */; };
+		C458B40925C8D933002AA853 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C458B40825C8D933002AA853 /* LikeViewController.swift */; };
+		C4604C3C25BD08710036D0CE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4604C3B25BD08710036D0CE /* ProfileViewController.swift */; };
 		C4607DE625B3C89C0056CA60 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4607DE525B3C89C0056CA60 /* SearchViewController.swift */; };
 		C4632B8925AE880900987302 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4632B8825AE880900987302 /* UserDataModel.swift */; };
 		C47A453025AFC66500F1A3EF /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A452F25AFC66500F1A3EF /* ConfigurationViewController.swift */; };
 		C47A453D25AFCE1900F1A3EF /* RoomDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A453C25AFCE1900F1A3EF /* RoomDataModel.swift */; };
+		C47DEAE525C94EE500C6EC86 /* SeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47DEAE425C94EE500C6EC86 /* SeeViewController.swift */; };
 		C482B9A825B1749700ED41DF /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C482B9A725B1749700ED41DF /* CommentViewController.swift */; };
+		C490370625C004E0003BE595 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C49036FB25C004DA003BE595 /* Pacifico-Regular.ttf */; };
+		C490370725C004E0003BE595 /* Knewave-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C49036FC25C004DB003BE595 /* Knewave-Regular.ttf */; };
+		C490370825C004E0003BE595 /* Sacramento-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C49036FD25C004DB003BE595 /* Sacramento-Regular.ttf */; };
+		C490370925C004E0003BE595 /* HachiMaruPop-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C49036FE25C004DC003BE595 /* HachiMaruPop-Regular.ttf */; };
+		C490370A25C004E0003BE595 /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C49036FF25C004DD003BE595 /* PermanentMarker-Regular.ttf */; };
+		C490370B25C004E0003BE595 /* MaShanZheng-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C490370025C004DD003BE595 /* MaShanZheng-Regular.ttf */; };
+		C490370C25C004E0003BE595 /* MarckScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C490370125C004DE003BE595 /* MarckScript-Regular.ttf */; };
+		C490370D25C004E0003BE595 /* GreatVibes-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C490370225C004DE003BE595 /* GreatVibes-Regular.ttf */; };
+		C490370E25C004E0003BE595 /* Parisienne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C490370325C004DF003BE595 /* Parisienne-Regular.ttf */; };
+		C490370F25C004E0003BE595 /* ShadowsIntoLight-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C490370425C004DF003BE595 /* ShadowsIntoLight-Regular.ttf */; };
+		C490371025C004E0003BE595 /* VT323-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C490370525C004E0003BE595 /* VT323-Regular.ttf */; };
+		C4E6AAC025C7D4EF00E6D9E2 /* PagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E6AABF25C7D4EF00E6D9E2 /* PagingMenuViewController.swift */; };
+		C4E6AAC825C7DDDD00E6D9E2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E6AAC725C7DDDD00E6D9E2 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +83,6 @@
 		C4312FB725AA8C29006DB433 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		C4312FBC25AA9D74006DB433 /* LoadDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDBModel.swift; sourceTree = "<group>"; };
 		C4312FC125AA9DB1006DB433 /* DataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
-		C44BCE4D25A96A5A00D3E249 /* LikeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDataModel.swift; sourceTree = "<group>"; };
 		C44BCE5525AA7B8500D3E249 /* PostFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFieldViewController.swift; sourceTree = "<group>"; };
 		C456A7842595840700B2AE32 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		C456A7852595840700B2AE32 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
@@ -88,11 +103,32 @@
 		C457A8022578ED380070F290 /* SecretSNSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretSNSUITests.swift; sourceTree = "<group>"; };
 		C457A8042578ED380070F290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C457A83C2578FB800070F290 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C458B40325C8D921002AA853 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		C458B40825C8D933002AA853 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
+		C4604C3B25BD08710036D0CE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C4607DE525B3C89C0056CA60 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C4632B8825AE880900987302 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		C47A452F25AFC66500F1A3EF /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		C47A453C25AFCE1900F1A3EF /* RoomDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDataModel.swift; sourceTree = "<group>"; };
+		C47DEADA25C93A5800C6EC86 /* MPLUSRounded1c-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUSRounded1c-Bold.ttf"; sourceTree = "<group>"; };
+		C47DEADB25C93A5800C6EC86 /* YuseiMagic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YuseiMagic-Regular.ttf"; sourceTree = "<group>"; };
+		C47DEADC25C93A5800C6EC86 /* PottaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PottaOne-Regular.ttf"; sourceTree = "<group>"; };
+		C47DEAE025C93A9C00C6EC86 /* NotoSerifJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSerifJP-Bold.otf"; path = "../NotoSerifJP-Bold.otf"; sourceTree = "<group>"; };
+		C47DEAE425C94EE500C6EC86 /* SeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeViewController.swift; sourceTree = "<group>"; };
 		C482B9A725B1749700ED41DF /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		C49036FB25C004DA003BE595 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
+		C49036FC25C004DB003BE595 /* Knewave-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Knewave-Regular.ttf"; sourceTree = "<group>"; };
+		C49036FD25C004DB003BE595 /* Sacramento-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sacramento-Regular.ttf"; sourceTree = "<group>"; };
+		C49036FE25C004DC003BE595 /* HachiMaruPop-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HachiMaruPop-Regular.ttf"; sourceTree = "<group>"; };
+		C49036FF25C004DD003BE595 /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PermanentMarker-Regular.ttf"; sourceTree = "<group>"; };
+		C490370025C004DD003BE595 /* MaShanZheng-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MaShanZheng-Regular.ttf"; sourceTree = "<group>"; };
+		C490370125C004DE003BE595 /* MarckScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MarckScript-Regular.ttf"; sourceTree = "<group>"; };
+		C490370225C004DE003BE595 /* GreatVibes-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GreatVibes-Regular.ttf"; sourceTree = "<group>"; };
+		C490370325C004DF003BE595 /* Parisienne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Parisienne-Regular.ttf"; sourceTree = "<group>"; };
+		C490370425C004DF003BE595 /* ShadowsIntoLight-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ShadowsIntoLight-Regular.ttf"; sourceTree = "<group>"; };
+		C490370525C004E0003BE595 /* VT323-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VT323-Regular.ttf"; sourceTree = "<group>"; };
+		C4E6AABF25C7D4EF00E6D9E2 /* PagingMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuViewController.swift; sourceTree = "<group>"; };
+		C4E6AAC725C7DDDD00E6D9E2 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CCAFA1114B9B22FCC31DA54C /* Pods-SecretSNSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecretSNSTests.debug.xcconfig"; path = "Target Support Files/Pods-SecretSNSTests/Pods-SecretSNSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D475437D426A0EB0EDE1AEE9 /* Pods_SecretSNSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecretSNSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -175,6 +211,7 @@
 			children = (
 				C457A7E22578ED350070F290 /* SceneDelegate.swift */,
 				C457A7E02578ED350070F290 /* AppDelegate.swift */,
+				C49036FA25C004C7003BE595 /* fonts */,
 				C457A8302578FAA70070F290 /* Model */,
 				C457A8352578FAD00070F290 /* View */,
 				C457A8342578FAB30070F290 /* Controller */,
@@ -203,7 +240,6 @@
 		C457A8302578FAA70070F290 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C44BCE4D25A96A5A00D3E249 /* LikeDataModel.swift */,
 				C4312FAF25AA88B6006DB433 /* SendDBModel.swift */,
 				C4312FBC25AA9D74006DB433 /* LoadDBModel.swift */,
 				C4312FC125AA9DB1006DB433 /* DataSet.swift */,
@@ -216,6 +252,7 @@
 		C457A8342578FAB30070F290 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C4E6AAC725C7DDDD00E6D9E2 /* StartViewController.swift */,
 				C457A83C2578FB800070F290 /* LoginViewController.swift */,
 				C4312FB725AA8C29006DB433 /* SelectViewController.swift */,
 				C456A7C9259C1CC000B2AE32 /* HomeViewController.swift */,
@@ -223,6 +260,11 @@
 				C44BCE5525AA7B8500D3E249 /* PostFieldViewController.swift */,
 				C482B9A725B1749700ED41DF /* CommentViewController.swift */,
 				C47A452F25AFC66500F1A3EF /* ConfigurationViewController.swift */,
+				C4E6AABF25C7D4EF00E6D9E2 /* PagingMenuViewController.swift */,
+				C458B40325C8D921002AA853 /* MyViewController.swift */,
+				C458B40825C8D933002AA853 /* LikeViewController.swift */,
+				C47DEAE425C94EE500C6EC86 /* SeeViewController.swift */,
+				C4604C3B25BD08710036D0CE /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +283,28 @@
 				C40E8255259185F3009B306C /* GoogleService-Info.plist */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C49036FA25C004C7003BE595 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C490370225C004DE003BE595 /* GreatVibes-Regular.ttf */,
+				C49036FE25C004DC003BE595 /* HachiMaruPop-Regular.ttf */,
+				C49036FC25C004DB003BE595 /* Knewave-Regular.ttf */,
+				C490370125C004DE003BE595 /* MarckScript-Regular.ttf */,
+				C490370025C004DD003BE595 /* MaShanZheng-Regular.ttf */,
+				C49036FB25C004DA003BE595 /* Pacifico-Regular.ttf */,
+				C490370325C004DF003BE595 /* Parisienne-Regular.ttf */,
+				C49036FF25C004DD003BE595 /* PermanentMarker-Regular.ttf */,
+				C49036FD25C004DB003BE595 /* Sacramento-Regular.ttf */,
+				C490370425C004DF003BE595 /* ShadowsIntoLight-Regular.ttf */,
+				C490370525C004E0003BE595 /* VT323-Regular.ttf */,
+				C47DEADA25C93A5800C6EC86 /* MPLUSRounded1c-Bold.ttf */,
+				C47DEAE025C93A9C00C6EC86 /* NotoSerifJP-Bold.otf */,
+				C47DEADC25C93A5800C6EC86 /* PottaOne-Regular.ttf */,
+				C47DEADB25C93A5800C6EC86 /* YuseiMagic-Regular.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,9 +418,20 @@
 				C457A7ED2578ED380070F290 /* LaunchScreen.storyboard in Resources */,
 				C40E8256259185F3009B306C /* GoogleService-Info.plist in Resources */,
 				C456A7872595840700B2AE32 /* PostCell.xib in Resources */,
+				C490371025C004E0003BE595 /* VT323-Regular.ttf in Resources */,
+				C490370825C004E0003BE595 /* Sacramento-Regular.ttf in Resources */,
+				C490370C25C004E0003BE595 /* MarckScript-Regular.ttf in Resources */,
 				C456A78E2595843800B2AE32 /* CommentCell.xib in Resources */,
+				C490370625C004E0003BE595 /* Pacifico-Regular.ttf in Resources */,
+				C490370D25C004E0003BE595 /* GreatVibes-Regular.ttf in Resources */,
+				C490370925C004E0003BE595 /* HachiMaruPop-Regular.ttf in Resources */,
+				C490370725C004E0003BE595 /* Knewave-Regular.ttf in Resources */,
 				C457A7EA2578ED380070F290 /* Assets.xcassets in Resources */,
+				C490370F25C004E0003BE595 /* ShadowsIntoLight-Regular.ttf in Resources */,
+				C490370A25C004E0003BE595 /* PermanentMarker-Regular.ttf in Resources */,
 				C457A7E82578ED350070F290 /* Main.storyboard in Resources */,
+				C490370B25C004E0003BE595 /* MaShanZheng-Regular.ttf in Resources */,
+				C490370E25C004E0003BE595 /* Parisienne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,18 +563,23 @@
 				C4607DE625B3C89C0056CA60 /* SearchViewController.swift in Sources */,
 				C457A83D2578FB800070F290 /* LoginViewController.swift in Sources */,
 				C44BCE5625AA7B8500D3E249 /* PostFieldViewController.swift in Sources */,
+				C47DEAE525C94EE500C6EC86 /* SeeViewController.swift in Sources */,
 				C457A7E12578ED350070F290 /* AppDelegate.swift in Sources */,
+				C4E6AAC825C7DDDD00E6D9E2 /* StartViewController.swift in Sources */,
 				C47A453D25AFCE1900F1A3EF /* RoomDataModel.swift in Sources */,
+				C4604C3C25BD08710036D0CE /* ProfileViewController.swift in Sources */,
 				C457A7E32578ED350070F290 /* SceneDelegate.swift in Sources */,
+				C458B40925C8D933002AA853 /* LikeViewController.swift in Sources */,
 				C4312FB025AA88B6006DB433 /* SendDBModel.swift in Sources */,
+				C458B40425C8D921002AA853 /* MyViewController.swift in Sources */,
 				C4312FC225AA9DB1006DB433 /* DataSet.swift in Sources */,
 				C482B9A825B1749700ED41DF /* CommentViewController.swift in Sources */,
-				C44BCE4E25A96A5A00D3E249 /* LikeDataModel.swift in Sources */,
 				C4632B8925AE880900987302 /* UserDataModel.swift in Sources */,
 				C456A7862595840700B2AE32 /* PostCell.swift in Sources */,
 				C456A78D2595843800B2AE32 /* CommentCell.swift in Sources */,
 				C47A453025AFC66500F1A3EF /* ConfigurationViewController.swift in Sources */,
 				C456A7CA259C1CC000B2AE32 /* HomeViewController.swift in Sources */,
+				C4E6AAC025C7D4EF00E6D9E2 /* PagingMenuViewController.swift in Sources */,
 				C4312FBD25AA9D74006DB433 /* LoadDBModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,12 +758,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9LRSV3J2FB;
 				INFOPLIST_FILE = "$(SRCROOT)/SecretSNS/View/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yonegen.SecretSNS;
+				PRODUCT_BUNDLE_IDENTIFIER = SecretSNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -697,12 +778,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9LRSV3J2FB;
 				INFOPLIST_FILE = "$(SRCROOT)/SecretSNS/View/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yonegen.SecretSNS;
+				PRODUCT_BUNDLE_IDENTIFIER = SecretSNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

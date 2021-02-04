@@ -17,9 +17,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     let roomDataModel = RoomDataModel()
     var roomData = [String]()
     
-    var loadDBModel = LoadDBModel()
-    var db = Firestore.firestore()
-    
     
     @IBOutlet var tableView: UITableView!
        
@@ -33,14 +30,11 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         roomData = roomDataModel.roomData
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
-       
+
         tableView.isHidden = true
         
     }
@@ -63,9 +57,9 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBAction func PostButton(_ sender: Any) {
         
         let postVC = self.storyboard?.instantiateViewController(identifier: "postVC") as! PostFieldViewController
-        self.navigationController?.pushViewController(postVC, animated: true)
-        
-        //postVC.modalTransitionStyle = .coverVertical
+        postVC.modalTransitionStyle = .flipHorizontal
+        postVC.modalPresentationStyle = .fullScreen
+        self.present(postVC, animated: true, completion: nil)
     }
     
     
@@ -83,8 +77,15 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
         //room名
         let roomLabel = cell.contentView.viewWithTag(1) as! UILabel
+        let roomImage = cell.contentView.viewWithTag(2) as! UIImageView
         roomLabel.text = roomData[indexPath.row]
-        
+        var randomColor: UIColor {
+           let r = CGFloat.random(in: 0 ... 255) / 255.0
+           let g = CGFloat.random(in: 0 ... 255) / 255.0
+           let b = CGFloat.random(in: 0 ... 255) / 255.0
+           return UIKit.UIColor(red: r, green: g, blue: b, alpha: 1.0)
+       }
+        roomImage.tintColor = randomColor
         
         return cell
         
@@ -102,12 +103,10 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         //画面遷移
         let selectVC = self.storyboard?.instantiateViewController(identifier: "selectVC") as! SelectViewController
         selectVC.roomNumber = indexPath.row
-        selectVC.modalTransitionStyle = .partialCurl
+        selectVC.modalTransitionStyle = .flipHorizontal
         selectVC.modalPresentationStyle = .fullScreen
         
-        self.navigationController?.present(selectVC, animated: true, completion:nil)
-
-        
+        self.present(selectVC, animated: true, completion:nil)
         
     }
 }

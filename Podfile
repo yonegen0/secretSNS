@@ -20,10 +20,14 @@ pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
-  pod 'VerticalCardSwiper'
   pod 'SDWebImage'
   pod 'PKHUD'
   pod "ViewAnimator"
   pod 'ActiveLabel'
+  pod 'MaterialComponents'
+  pod 'LTMorphingLabel'
+  pod 'RAMAnimatedTabBarController'
+  pod 'MXParallaxHeader'
+  pod 'Tabman'
 
 end

@@ -18,14 +18,16 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
     
     let manImage:UIImage = UIImage(named: "man2")!
     let womanImage:UIImage = UIImage(named: "woman2")!
+    let CMmanImage:UIImage = UIImage(named: "man3")!
+    let CMwomanImage:UIImage = UIImage(named: "woman3")!
+    let personImage:UIImage = UIImage(named: "person")!
     
     var roomNumber = Int()
     var roomString = String()
     let roomDataModel = RoomDataModel()
     var loadDBModel = LoadDBModel()
     var db = Firestore.firestore()
-    var docID = [String]()
-    var docString = String()
+    var CMdataSets = [DataSet]()
     
     var userID = String()
     
@@ -38,35 +40,59 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
         if UserDefaults.standard.object(forKey: "userID") != nil {
             userID = UserDefaults.standard.object(forKey: "userID") as! String
         }
-    
-        print("\(userID)")
         
         tableView.delegate = self
         tableView.dataSource = self
         loadDBModel.loadOKDelegate = self
-        print(docID)
+        
+        roomCheck()
         
         tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
-        
+        print("viewdid")
     }
     
     func loadOK(check: Int) {
         
         if check == 1 {
             tableView.reloadData()
+            print("loadok")
         }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        roomCheck()
-        
-        DocData()
-       
-        self.navigationController?.isNavigationBarHidden = false
+    
+        let dispatchGroup = DispatchGroup()
+        let dispatchQueue = DispatchQueue(label: "queue", attributes: .concurrent)
+        loadDBModel.loadContents(roomData: roomString, completion: { docID in
+            
+            docID.forEach { id in
+                print(id)
+                dispatchGroup.enter()
+                dispatchQueue.async {
+                    self.loadDBModel.loadBestComment(CMroomData: self.roomString, docID: id ,completion:  {dataSet in
+                        if let dataSet = dataSet {
+                            self.CMdataSets.append(dataSet)
+                        }
+                        dispatchGroup.leave()
+                    })
+                }
+            }
+        })
+    
+        dispatchGroup.notify(queue: .main) {
+            print("リロードされるよ")
+            self.tableView.reloadData()
+        }
 
+        print("viewwill")
+    }
+    
+    
+    @IBAction func `return`(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,11 +106,38 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         
-        tableView.rowHeight = 350
+        tableView.rowHeight = 400
         
         let sexData = loadDBModel.dataSets[indexPath.row].sexData
         let ageData = loadDBModel.dataSets[indexPath.row].ageData
         let userName = loadDBModel.dataSets[indexPath.row].userName
+        let docid = loadDBModel.dataSets[indexPath.row].docID
+        print("ここだよ",docid)
+        print("CMData",CMdataSets)
+        
+        if let CMData = CMdataSets.first(where: {$0.docID == docid}) {
+            
+    
+            if CMData.sexData == "女性" {
+                cell.CMImageView.image = CMwomanImage
+            } else if CMData.sexData == "男性"{
+                cell.CMImageView.image = CMmanImage
+            }
+            cell.Number1.isHidden = false
+            cell.BestComment.font = UIFont(name: "YuseiMagic-Regular", size: 17)
+            cell.CMuserNameLabel.text = CMData.userName
+            cell.CMuserNameLabel.font = UIFont(name: "YuseiMagic-Regular", size: 17)
+            cell.CMuserInforLabel.text = CMData.ageData + CMData.sexData
+            cell.CMcommentLabel.text = "\(CMData.comment)"
+        } else {
+            
+            cell.CMImageView.image = personImage
+            cell.Number1.isHidden = true
+            cell.CMuserNameLabel.text = "まだコメントがありません"
+            cell.CMuserNameLabel.font = .systemFont(ofSize: 25)
+            cell.CMuserInforLabel.text = ""
+            cell.CMcommentLabel.text = ""
+        }
         
         cell.commentLabel.numberOfLines = 0
         
@@ -93,7 +146,9 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
         } else if sexData == "男性"{
             cell.profileImageView.image = manImage
         }
+        
         cell.userNameLabel.text = userName
+        cell.userNameLabel.font = UIFont(name: "YuseiMagic-Regular", size: 17)
         cell.userInforLabel.text = ageData + sexData
         cell.commentLabel.text = "\(loadDBModel.dataSets[indexPath.row].comment)"
         cell.countLabel.text = String(self.loadDBModel.dataSets[indexPath.row].likeCount)
@@ -101,11 +156,13 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
         cell.likeButton.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
         cell.commentButton.tag = indexPath.row
         cell.commentButton.addTarget(self, action: #selector(Comment(_:)), for: .touchUpInside)
-        
+                
         if (self.loadDBModel.dataSets[indexPath.row].likeFlagDic[userID] != nil) == true{
             
             
             let flag = self.loadDBModel.dataSets[indexPath.row].likeFlagDic[userID]
+            
+            
             
             if flag! as! Bool == true{
                 
@@ -114,7 +171,7 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
                 cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
             }
         }
-        
+        print("cellforat")
         
         return cell
     }
@@ -129,17 +186,18 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
         let ageData = loadDBModel.dataSets[indexPath.row].ageData
         let userName = loadDBModel.dataSets[indexPath.row].userName
         
-        commentVC.userName = userName
-        commentVC.ageData = ageData
-        commentVC.sexData = sexData
+        commentVC.PostuserName = userName
+        commentVC.PostageData = ageData
+        commentVC.PostsexData = sexData
         commentVC.comment = "\(loadDBModel.dataSets[indexPath.row].comment)"
         commentVC.count = self.loadDBModel.dataSets[indexPath.row].likeCount
-        
-        commentVC.docID = docID[indexPath.row]
+        commentVC.flag = self.loadDBModel.dataSets[indexPath.row].likeFlagDic[userID] as? Bool ?? false
+        print(userID)
+        commentVC.docID = loadDBModel.dataSets[indexPath.row].docID
         commentVC.roomString = self.roomString
-        commentVC.modalTransitionStyle = .flipHorizontal
+        commentVC.modalTransitionStyle = .crossDissolve
         commentVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.present(commentVC, animated: true, completion: nil)
+        self.present(commentVC, animated: true, completion: nil)
 
         
         
@@ -153,33 +211,16 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
         
         roomString = roomDataModel.roomString
         
-        loadDBModel.loadContents(roomData: roomString)
-        
-        print(roomString)
-        
-    }
     
-    func DocData() {
-        
-        db.collection("\(roomString)").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    self.docID.append(document.documentID)
-                }
-            }
-        }
+        print(roomString)
         
     }
     
     @objc func like(_ sender:UIButton){
             
         //値を送信
-        print(docString)
         var count = Int()
-        let flag = self.loadDBModel.dataSets[sender.tag].likeFlagDic[userID]
-        print(flag)
+        let flag = self.loadDBModel.dataSets[sender.tag].likeFlagDic[userID] 
         print(userID)
         
         if flag == nil{
@@ -189,7 +230,7 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
             
         }else{
             
-            if flag! as! Bool == true{
+            if flag as! Bool == true{
                 
                 count = self.loadDBModel.dataSets[sender.tag].likeCount - 1
                 db.collection("\(roomString)").document(loadDBModel.dataSets[sender.tag].docID).setData(["likeFlagDic":[userID:false]], merge: true)
@@ -210,23 +251,25 @@ class SelectViewController:UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     @objc func Comment(_ sender:UIButton){
+        
         let commentVC = self.storyboard?.instantiateViewController(identifier: "commentVC") as! CommentViewController
         
         let sexData = loadDBModel.dataSets[sender.tag].sexData
         let ageData = loadDBModel.dataSets[sender.tag].ageData
         let userName = loadDBModel.dataSets[sender.tag].userName
         
-        commentVC.userName = userName
-        commentVC.ageData = ageData
-        commentVC.sexData = sexData
+        commentVC.PostuserName = userName
+        commentVC.PostageData = ageData
+        commentVC.PostsexData = sexData
         commentVC.comment = "\(loadDBModel.dataSets[sender.tag].comment)"
         commentVC.count = self.loadDBModel.dataSets[sender.tag].likeCount
+        commentVC.flag = self.loadDBModel.dataSets[sender.tag].likeFlagDic[userID] as? Bool ?? false
         
-        commentVC.docID = docID[sender.tag]
+        commentVC.docID = loadDBModel.dataSets[sender.tag].docID
         commentVC.roomString = self.roomString
-        commentVC.modalTransitionStyle = .flipHorizontal
+        commentVC.modalTransitionStyle = .crossDissolve
         commentVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.present(commentVC, animated: true, completion: nil)
+        self.present(commentVC, animated: true, completion: nil)
 
         
     }

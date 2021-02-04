@@ -41,8 +41,6 @@ class PostFieldViewController: UIViewController,UITextViewDelegate,UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userDataModel.usercheck()
-        
         userData()
         
         print(userID)
@@ -67,12 +65,10 @@ class PostFieldViewController: UIViewController,UITextViewDelegate,UIPickerViewD
         
         roomString = categoryTextField.text!
         
-        
-        
         print(roomString)
         let sendDBModel = SendDBModel(userID: Auth.auth().currentUser!.uid, userName: userName, comment: textView.text!, ageData: ageData, sexData: sexData,likeCount: 0,likeFlagDic: [userID:false])
         sendDBModel.sendData(roomData: roomString)
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -82,6 +78,8 @@ class PostFieldViewController: UIViewController,UITextViewDelegate,UIPickerViewD
     }
     
     func userData (){
+        userDataModel.usercheck()
+        
         userName = userDataModel.userName
         userID = userDataModel.userID
         ageData = userDataModel.ageData

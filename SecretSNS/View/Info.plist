@@ -20,6 +20,23 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GreatVibes-Regular.ttf</string>
+		<string>HachiMaruPop-Regular.ttf</string>
+		<string>YuseiMagic-Regular.ttf</string>
+		<string>PottaOne-Regular.ttf</string>
+		<string>NotoSerifJP-Bold.otf</string>
+		<string>MPLUSRounded1c-Bold.ttf</string>
+		<string>Knewave-Regular.ttf</string>
+		<string>MarckScript-Regular.ttf</string>
+		<string>MaShanZheng-Regular.ttf</string>
+		<string>Pacifico-Regular.ttf</string>
+		<string>Parisienne-Regular.ttf</string>
+		<string>Sacramento-Regular.ttf</string>
+		<string>ShadowsIntoLight-Regular.ttf</string>
+		<string>VT323-Regular.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -41,10 +58,15 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>cat</string>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -52,8 +74,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

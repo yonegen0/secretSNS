@@ -10,7 +10,7 @@ import Foundation
 class RoomDataModel {
     
     var roomData = 
-        ["恋愛","エンターテインメントと趣味","健康、美容、ファッション","生き方、人間関係","ビジネス、経済、お金"]
+        ["恋愛","エンターテインメントと趣味","健康、美容、ファッション","生き方、人間関係","ビジネス、経済、お金","ニュース、政治、国際情勢","おしゃべり、雑談"]
     
     var roomString = String()
     var roomNumber = Int()
@@ -27,28 +27,16 @@ class RoomDataModel {
         case 3:
             roomString = "生き方、人間関係"
         case 4:
-            roomString = "money"
+            roomString = "ビジネス、経済、お金"
+        case 5:
+            roomString = "ニュース、政治、国際情勢"
+        case 6:
+            roomString = "おしゃべり、雑談"
         default:
             break
         }
         
     }
     
-    func roomSendData() {
         
-        switch  roomString{
-        case "恋愛":
-            roomString = "love"
-        case "エンターテインメントと趣味":
-            roomString = "hobby"
-        case "健康、美容、ファッション":
-            roomString = "health"
-        case "生き方、人間関係":
-            roomString = "communication"
-        case "ビジネス、経済、お金":
-            roomString = "money"
-        default:
-            break
-        }
-    }
 }

@@ -20,6 +20,8 @@ class PostCell: UITableViewCell {
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var commentLabel: UILabel!
     
+    @IBOutlet var BestComment: UILabel!
+    @IBOutlet var Number1: UIImageView!
     @IBOutlet var CMImageView: UIImageView!
     @IBOutlet var CMuserInforLabel: UILabel!
     @IBOutlet var CMuserNameLabel: UILabel!
